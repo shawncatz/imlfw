@@ -1,0 +1,4 @@
+name: email
+path: /email
+rest: true
+model: '*Email'

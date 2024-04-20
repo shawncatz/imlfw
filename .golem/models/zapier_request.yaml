@@ -1,0 +1,5 @@
+name: zapier_request
+type: struct
+fields:
+  - name: payload
+    type: "*Email"

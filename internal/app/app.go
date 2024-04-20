@@ -3,8 +3,10 @@ package app
 import (
 	"context"
 
-	"github.com/dashotv/fae"
+	"github.com/labstack/echo/v4"
 	"go.uber.org/zap"
+
+	"github.com/dashotv/fae"
 )
 
 var app *Application
@@ -22,6 +24,13 @@ type Application struct {
 
 	//golem:template:app/app_partial_definitions
 	// DO NOT EDIT. This section is managed by github.com/dashotv/golem.
+	// Routes
+	Engine  *echo.Echo
+	Default *echo.Group
+	Router  *echo.Group
+
+	// Models
+	DB *Connector
 
 	//golem:template:app/app_partial_definitions
 
@@ -52,6 +61,11 @@ func Start() error {
 			return err
 		}
 	}
+
+	// app.Engine.Debug = true
+	// app.Engine.Use(middleware.BodyDump(func(c echo.Context, reqBody, resBody []byte) {
+	// 	app.Log.Debug("request", zap.String("request", string(reqBody)), zap.String("response", string(resBody)))
+	// }))
 
 	for _, f := range starters {
 		if err := f(ctx, app); err != nil {

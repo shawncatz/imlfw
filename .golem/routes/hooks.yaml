@@ -1,0 +1,10 @@
+name: hooks
+path: /hooks
+routes:
+  - name: zapier
+    path: /zapier
+    method: POST
+    params:
+      - name: payload
+        type: "*ZapierRequest"
+        bind: true

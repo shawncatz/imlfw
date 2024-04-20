@@ -1,0 +1,19 @@
+name: email
+type: model
+fields:
+  - name: thread_id
+    type: string
+  - name: subject
+    type: string
+  - name: body
+    type: string
+  - name: date
+    type: string
+  - name: from_name
+    type: string
+  - name: from_email
+    type: string
+  - name: reply_to
+    type: string
+  - name: reply_name
+    type: string
