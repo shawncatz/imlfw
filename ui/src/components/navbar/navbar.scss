@@ -1,0 +1,50 @@
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+.searchItem {
+  max-width: 100%;
+  cursor: pointer;
+  padding: 3px 1px;
+  span {
+    flex-grow: 1;
+    max-width: '100%';
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+.searchItem:hover {
+  background-color: #363636;
+}
+
+.notice {
+  width: 300px;
+  .title {
+    font-weight: bold;
+  }
+  .title,
+  .message {
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
