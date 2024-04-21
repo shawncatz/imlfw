@@ -1,13 +1,13 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from 'react-router-dom';
 
-import { Stack } from "@mui/material";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+import EngineeringIcon from '@mui/icons-material/Engineering';
+import { Stack } from '@mui/material';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 
-import { NavPageWithChildren } from "./types";
-import Logo from "/logo-small.png";
+import { NavPageWithChildren } from './types';
 
 const drawerWidth = 240;
 export interface NavDrawerProps {
@@ -20,8 +20,8 @@ export const NavDrawer = ({ pages, handleDrawerClose }: NavDrawerProps) => {
       variant="permanent"
       anchor="left"
       sx={{
-        display: { xs: "none", sm: "block" },
-        "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
+        display: { xs: 'none', sm: 'block' },
+        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
       }}
       open
     >
@@ -53,8 +53,8 @@ export const NavDrawerMobile = ({
           keepMounted: true, // Better open performance on mobile.
         }}
         sx={{
-          display: { xs: "block", sm: "none" },
-          "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
+          display: { xs: 'block', sm: 'none' },
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
         }}
       >
         <NavDrawerToolbar {...{ handleDrawerClose }} />
@@ -64,39 +64,25 @@ export const NavDrawerMobile = ({
   );
 };
 
-export const NavDrawerToolbar = ({
-  handleDrawerClose,
-}: {
-  handleDrawerClose: () => void;
-}) => {
+export const NavDrawerToolbar = ({ handleDrawerClose }: { handleDrawerClose: () => void }) => {
   return (
-    <Toolbar
-      disableGutters
-      sx={{ display: "flex", backgroundColor: "rgba(255,255,255,0.09)" }}
-    >
+    <Toolbar disableGutters sx={{ display: 'flex', backgroundColor: 'rgba(255,255,255,0.09)' }}>
       <Link to="/" onClick={handleDrawerClose}>
-        <Stack
-          direction="row"
-          spacing={1}
-          alignItems="center"
-          pl={2}
-          width="100%"
-        >
-          <Box sx={{ mr: 2 }}>
-            <img alt="logo" src={Logo} width="40" height="40" />
+        <Stack direction="row" spacing={2} alignItems="center" pl={2} width="100%">
+          <Box>
+            <EngineeringIcon color="primary" />
           </Box>
           <Typography
             variant="h6"
             noWrap
             sx={{
-              mr: 2,
-              fontFamily: "monospace",
+              fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: ".3rem",
-              textDecoration: "none",
+              letterSpacing: '.3rem',
+              textDecoration: 'none',
             }}
           >
-            DASHOTV
+            LFW
           </Typography>
         </Stack>
       </Link>
@@ -143,14 +129,14 @@ export const NavDrawerLinks = ({
                   sx={{
                     p: 1,
                     pl: 2,
-                    "&:hover": { backgroundColor: "#323232" },
+                    '&:hover': { backgroundColor: '#323232' },
                   }}
                 >
                   {icon}
                   <Typography
                     variant="body2"
                     fontWeight="bolder"
-                    color={matchPath(page, exact) ? "primary" : "inherit"}
+                    color={matchPath(page, exact) ? 'primary' : 'inherit'}
                   >
                     {name}
                   </Typography>

@@ -1,20 +1,21 @@
-import * as ReactDOMClient from "react-dom/client";
-import { HelmetProvider } from "react-helmet-async";
-import { BrowserRouter as Router } from "react-router-dom";
+import * as ReactDOMClient from 'react-dom/client';
+import { HelmetProvider } from 'react-helmet-async';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import App from "./App";
-import { SnackbarProvider } from "notistack";
+import { SnackbarProvider } from 'notistack';
 
-import { ThemeProvider, createTheme } from "@mui/material";
-import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider, createTheme } from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-const MOUNT_NODE = document.getElementById("root") as HTMLElement;
+import App from './App';
+
+const MOUNT_NODE = document.getElementById('root') as HTMLElement;
 
 const darkTheme = createTheme({
   palette: {
-    mode: "dark",
+    mode: 'dark',
   },
 });
 
@@ -33,9 +34,9 @@ export const Root = () => {
     <ThemeProvider theme={darkTheme}>
       <SnackbarProvider
         maxSnack={3}
-        anchorOrigin={{ horizontal: "center", vertical: "top" }}
+        anchorOrigin={{ horizontal: 'center', vertical: 'top' }}
         disableWindowBlurListener={true}
-        TransitionProps={{ direction: "down" }}
+        TransitionProps={{ direction: 'down' }}
         dense={true}
       >
         <Router>
