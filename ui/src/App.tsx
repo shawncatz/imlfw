@@ -57,8 +57,8 @@ const fallbackRender = ({ error, resetErrorBoundary }: { error: Error; resetErro
 export const App = () => {
   return (
     <>
-      <Helmet titleTemplate="%s - DashoTV" defaultTitle="DashoTV">
-        <meta name="description" content="DashoTV media server" />
+      <Helmet titleTemplate="%s - IMLFW" defaultTitle="IMLFW">
+        <meta name="description" content="IMLFW - I'M Looking For Work" />
       </Helmet>
 
       <ErrorBoundary fallbackRender={fallbackRender}>
