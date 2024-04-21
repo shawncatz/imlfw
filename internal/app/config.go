@@ -2,8 +2,10 @@ package app
 
 import (
 	"strings"
+	"time"
 
 	"github.com/caarlos0/env/v10"
+	"golang.org/x/oauth2"
 
 	"github.com/dashotv/fae"
 )
@@ -41,10 +43,25 @@ type Config struct {
 	GmailClientID     string   `env:"GMAIL_CLIENT_ID"`
 	GmailClientSecret string   `env:"GMAIL_CLIENT_SECRET"`
 	GmailRedirectURIs []string `env:"GMAIL_REDIRECT_URIS" envSeparator:","`
-	GmailToken        string   `env:"GMAIL_TOKEN"`
+	GmailAuthToken    string   `env:"GMAIL_AUTH_TOKEN"`
 	// GmailAuthURI                 string   `env:"GMAIL_AUTH_URI"`
 	// GmailTokenURI                string   `env:"GMAIL_TOKEN_URI"`
 	// GmailAuthProviderX509CertURL string   `env:"GMAIL_AUTH_PROVIDER_X509_CERT_URL"`
+}
+
+func (c *Config) GmailToken() (*oauth2.Token, error) {
+	exp, err := time.Parse("2006-01-02T15:04:05Z", "2025-01-01T00:00:00Z")
+	if err != nil {
+		return nil, err
+	}
+
+	t := &oauth2.Token{
+		AccessToken:  c.GmailAuthToken,
+		TokenType:    "Bearer",
+		RefreshToken: "",
+		Expiry:       exp,
+	}
+	return t, nil
 }
 
 func (c *Config) Validate() error {

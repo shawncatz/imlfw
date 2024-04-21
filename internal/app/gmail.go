@@ -36,15 +36,14 @@ func setupGmail(a *Application) error {
 }
 
 func startGmail(ctx context.Context, a *Application) error {
-	t := a.Config.GmailToken
-	if t == "" {
-		a.Log.Warn("Gmail token is empty")
-		return nil
+	tok, err := a.Config.GmailToken()
+	if err != nil {
+		return fae.Wrap(err, "Gmail token error")
 	}
 
-	tok, err := a.Gmail.config.Exchange(ctx, t)
-	if err != nil {
-		return fae.Wrap(err, "Unable to retrieve token from web")
+	if tok.AccessToken == "" {
+		a.Log.Warn("Gmail token is empty")
+		return nil
 	}
 
 	client := a.Gmail.config.Client(ctx, tok)

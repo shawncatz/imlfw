@@ -34,5 +34,7 @@ func (a *Application) AuthGoogleCallback(c echo.Context, state string, code stri
 		return c.JSON(http.StatusInternalServerError, &Response{Error: true, Message: fmt.Sprintf("getting token: %v", err)})
 	}
 
-	return c.JSON(http.StatusOK, &Response{Error: false, Message: tok.AccessToken})
+	a.Log.Debugf("Token: %+v\n", tok)
+
+	return c.JSON(http.StatusOK, &Response{Error: false, Message: "ok"})
 }
