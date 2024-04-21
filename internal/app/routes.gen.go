@@ -84,6 +84,10 @@ func (a *Application) Routes() {
 	a.Default.GET("/", a.indexHandler)
 	a.Default.GET("/health", a.healthHandler)
 
+	auth := a.Router.Group("/auth")
+	auth.GET("/google/callback", a.AuthGoogleCallbackHandler)
+	auth.GET("/google", a.AuthGoogleHandler)
+
 	email := a.Router.Group("/email")
 	email.GET("/", a.EmailIndexHandler)
 	email.POST("/", a.EmailCreateHandler)
@@ -101,6 +105,7 @@ func (a *Application) indexHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, router.H{
 		"name": "imlfw",
 		"routes": router.H{
+			"auth":  "/auth",
 			"email": "/email",
 			"hooks": "/hooks",
 		},
@@ -113,6 +118,17 @@ func (a *Application) healthHandler(c echo.Context) error {
 		return err
 	}
 	return c.JSON(http.StatusOK, router.H{"name": "imlfw", "health": health})
+}
+
+// Auth (/auth)
+func (a *Application) AuthGoogleCallbackHandler(c echo.Context) error {
+	state := router.QueryParamString(c, "state")
+	code := router.QueryParamString(c, "code")
+	scope := router.QueryParamString(c, "scope")
+	return a.AuthGoogleCallback(c, state, code, scope)
+}
+func (a *Application) AuthGoogleHandler(c echo.Context) error {
+	return a.AuthGoogle(c)
 }
 
 // Email (/email)

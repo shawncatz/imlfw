@@ -34,6 +34,7 @@ type Application struct {
 
 	//golem:template:app/app_partial_definitions
 
+	Gmail *Gmail
 }
 
 func Setup() error {

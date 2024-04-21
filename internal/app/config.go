@@ -4,6 +4,7 @@ import (
 	"strings"
 
 	"github.com/caarlos0/env/v10"
+
 	"github.com/dashotv/fae"
 )
 
@@ -36,6 +37,14 @@ type Config struct {
 
 	//golem:template:app/config_partial_struct
 
+	GmailProjectID    string   `env:"GMAIL_PROJECT_ID"`
+	GmailClientID     string   `env:"GMAIL_CLIENT_ID"`
+	GmailClientSecret string   `env:"GMAIL_CLIENT_SECRET"`
+	GmailRedirectURIs []string `env:"GMAIL_REDIRECT_URIS" envSeparator:","`
+	GmailToken        string   `env:"GMAIL_TOKEN"`
+	// GmailAuthURI                 string   `env:"GMAIL_AUTH_URI"`
+	// GmailTokenURI                string   `env:"GMAIL_TOKEN_URI"`
+	// GmailAuthProviderX509CertURL string   `env:"GMAIL_AUTH_PROVIDER_X509_CERT_URL"`
 }
 
 func (c *Config) Validate() error {

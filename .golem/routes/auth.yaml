@@ -1,0 +1,19 @@
+name: auth
+path: /auth
+routes:
+  - name: google_callback
+    path: /google/callback
+    method: GET
+    params:
+      - name: state
+        type: string
+        query: true
+      - name: code
+        type: string
+        query: true
+      - name: scope
+        type: string
+        query: true
+  - name: google
+    path: /google
+    method: GET
