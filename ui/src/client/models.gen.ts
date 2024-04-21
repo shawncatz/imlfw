@@ -8,6 +8,7 @@ export interface Email {
   thread_id?: string;
   subject?: string;
   body?: string;
+  body_html?: string;
   date?: string;
   from_name?: string;
   from_email?: string;

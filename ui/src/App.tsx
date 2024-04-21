@@ -16,15 +16,15 @@ import { NavBar } from 'components/navbar';
 
 import './App.css';
 
-// const HomePage = lazy(() => import("pages/home/home.page"));
-// const HomePageWrapper = () => {
-//   return (
-//     <Suspense fallback={<div>Loading...</div>}>
-//       <HomePage />
-//     </Suspense>
-//   );
-// };
-const InboxPage = lazy(() => import('pages/inbox/inbox.page'));
+const HomePage = lazy(() => import('pages/home/home.page'));
+const HomePageWrapper = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomePage />
+    </Suspense>
+  );
+};
+const InboxPage = lazy(() => import('pages/inbox'));
 const InboxPageWrapper = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -54,6 +54,7 @@ const fallbackRender = ({ error, resetErrorBoundary }: { error: Error; resetErro
     </>
   );
 };
+
 export const App = () => {
   return (
     <>
@@ -65,7 +66,8 @@ export const App = () => {
         <NavBar />
         <Box sx={{ ml: { xs: 0, md: '240px' }, p: 1 }}>
           <Routes>
-            <Route path="/*" element={<InboxPageWrapper />} />
+            <Route path="/*" element={<HomePageWrapper />} />
+            <Route path="/emails/*" element={<InboxPageWrapper />} />
           </Routes>
         </Box>
       </ErrorBoundary>

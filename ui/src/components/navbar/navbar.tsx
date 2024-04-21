@@ -17,15 +17,20 @@ const drawerWidth = 240;
 const pages: NavPageWithChildren[] = [
   {
     icon: <HomeIcon fontSize="small" />,
-    name: 'Mail',
+    name: 'Home',
     page: '/',
     exact: true,
     children: [
       {
-        icon: <InboxIcon fontSize="small" />,
-        name: 'Inbox',
+        icon: <HomeIcon fontSize="small" />,
+        name: 'Home',
         page: '/',
         exact: true,
+      },
+      {
+        icon: <InboxIcon fontSize="small" />,
+        name: 'Inbox',
+        page: '/emails',
       },
     ],
   },

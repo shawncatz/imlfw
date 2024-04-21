@@ -69,6 +69,7 @@ type Email struct { // model
 	ThreadID  string `bson:"thread_id" json:"thread_id"`
 	Subject   string `bson:"subject" json:"subject"`
 	Body      string `bson:"body" json:"body"`
+	BodyHTML  string `bson:"body_html" json:"body_html"`
 	Date      string `bson:"date" json:"date"`
 	FromName  string `bson:"from_name" json:"from_name"`
 	FromEmail string `bson:"from_email" json:"from_email"`
