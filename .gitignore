@@ -2,3 +2,4 @@ imlfw
 /tmp
 .env*
 .md5*
+node_modules
